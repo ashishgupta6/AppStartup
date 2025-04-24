@@ -35,9 +35,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(sign3Intelligence: Sign3Intelligence, name: String, modifier: Modifier = Modifier) {
+fun Greeting(sign3Intelligence: Sign3Intelligence?, name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "${sign3Intelligence.getSessionId()}",
+        text = try {
+            "${sign3Intelligence?.getSessionId()}"
+        } catch (e: Exception) {
+            "${e.message}"
+        },
         modifier = modifier
     )
 }

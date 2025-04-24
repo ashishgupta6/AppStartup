@@ -1,5 +1,6 @@
 package com.example.appstartup
 
+import BaseInitializer
 import android.content.Context
 import android.media.VolumeShaper
 import android.os.Build
@@ -12,20 +13,17 @@ import kotlinx.coroutines.runBlocking
 
 
 // Initializes WorkManager.
-class WorkManagerInitializer : Initializer<Boolean> {
+class WorkManagerInitializer : BaseInitializer<Boolean>() {
+
     override fun create(context: Context): Boolean {
-        Log.i("TAG_WorkManagerInitializer", "Before WorkManagerInitializer")
+        Log.i("TAG_WorkManagerInitializer", "Before WorkManagerInitializer2")
 
 //        Thread.sleep(3000)
 
         runBlocking {
-            delay(3000)
+            delay(300)
         }
-        Log.i("TAG_WorkManagerInitializer", "After WorkManagerInitializer")
+        Log.i("TAG_WorkManagerInitializer", "After WorkManagerInitializer2")
         return true
-    }
-    override fun dependencies(): List<Class<out Initializer<*>>> {
-        // No dependencies on other libraries.
-        return emptyList()
     }
 }

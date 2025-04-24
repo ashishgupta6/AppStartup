@@ -69,6 +69,7 @@ dependencies {
 
     implementation(libs.androidx.startup.runtime)
     implementation (libs.intelligence.playstore)
+    implementation (libs.mixpanel.android) //107kb
 
 
 }

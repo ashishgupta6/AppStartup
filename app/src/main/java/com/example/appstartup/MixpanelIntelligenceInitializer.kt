@@ -1,26 +1,24 @@
 package com.example.appstartup
 
+import BaseInitializer
 import android.content.Context
 import android.util.Log
 import androidx.startup.Initializer
+import com.mixpanel.android.mpmetrics.MixpanelAPI
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
-class MixpanelIntelligenceInitializer : Initializer<Boolean> {
+class MixpanelIntelligenceInitializer : BaseInitializer<MixpanelAPI>() {
 
-    override fun create(context: Context):Boolean {
-        Log.i("TAG_MixpanelIntelligenceInitializer", "Before MixpanelIntelligenceInitializer")
-//        Thread.sleep(5000)
+    override fun create(context: Context): MixpanelAPI {
+        Log.i("TAG_TestIntelligenceInitializer", "Before MixPanelInitializer2")
+//        Thread.sleep(10000)
 
         runBlocking {
-            delay(5000)
+            delay(200)
         }
-        Log.i("TAG_MixpanelIntelligenceInitializer", "After MixpanelIntelligenceInitializer")
-        return true
-    }
-
-
-    override fun dependencies(): List<Class<out Initializer<*>>> {
-        return emptyList()
+        val mixpanel = MixpanelAPI.getInstance(context, "dd937bd3d2599d75c1793ffb6b35e8d9", false)
+        Log.i("TAG_TestIntelligenceInitializer", "After MixPanelInitializer2")
+        return mixpanel
     }
 }
